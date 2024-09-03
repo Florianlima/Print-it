@@ -26,7 +26,7 @@ const arrowRight = document.querySelector("#banner .arrow_right");
  
 const nbSlides = slides.length;
 
-const dots = document.querySelectorAll('.dot');
+
 
 const divDots = document.getElementById("dots");
 for (let i = 0; i < nbSlides; i++) {
@@ -38,12 +38,17 @@ for (let i = 0; i < nbSlides; i++) {
 	divDots.appendChild(dot);
 }
 
+const dots = document.querySelectorAll('.dot');
 
+const imageElement = document.querySelector("#banner .banner-img");
+const textElement = document.querySelector("#banner p");
 
-arrowLeft.addEventListener('click', function() {
-    alert('Vous avez cliqué sur la flèche gauche!');
+arrowLeft.addEventListener('click', function () {
+	currentIndex = (currentIndex - 1 + nbSlides) % nbSlides;
+	updateCarousel(currentIndex);
 });
 
-arrowRight.addEventListener('click', function() {
-    alert('Vous avez cliqué sur la flèche gauche!');
+arrowRight.addEventListener('click', function () {
+	currentIndex = (currentIndex - 1 + nbSlides) % nbSlides;
+	updateCarousel(currentIndex);
 });
