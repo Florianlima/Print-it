@@ -19,12 +19,12 @@ const slides = [
 /* initialisation variable currentIndex a 0*/
 let currentIndex = 0
 
-/* récupération de la class Arrow dans l'ID #banner */ 
+/* récupération de la class Arrow dans l'ID #banner */
 const arrowLeft = document.querySelector("#banner .arrow_left");
 const arrowRight = document.querySelector("#banner .arrow_right");
 
 
-/* initialisation constante avec valeur du nombre d éléments dans tableau slides */ 
+/* initialisation constante avec valeur du nombre d éléments dans tableau slides */
 const nbSlides = slides.length;
 
 
@@ -41,30 +41,30 @@ for (let i = 0; i < nbSlides; i++)/** initialise la boucle qui itère de 0 a Nbs
 
 const dots = document.querySelectorAll('.dot');/** prend tous les éléments avec la class dot et les stocke dans la constante dots */
 
-/* recupération de la class .banner-img et P dans l'ID #banner*/ 
+/* recupération de la class .banner-img et P dans l'ID #banner*/
 const imageElement = document.querySelector("#banner .banner-img");
 const textElement = document.querySelector("#banner p");
 
-/*En fonction de l'index fourni l'image,txt,dots se mettent à jour*/ 
+/*En fonction de l'index fourni l'image,txt,dots se mettent à jour*/
 function updateCarousel(index) {
 
 	if (index >= 0 && index < slides.length)/** verif si lindex fourni est valide */ {
 
 		imageElement.src/** met a jour la srce img correspondant a l'index */ = './assets/images/slideshow/' + slides[index].image;
-		textElement.innerHTML/*maj dynamique du contenu HTML du txt pour affiché la légende tagline */  = slides[index].tagLine;
+		textElement.innerHTML/*maj dynamique du contenu HTML du txt pour affiché la légende tagline */ = slides[index].tagLine;
 
 
-		dots.forEach(dot => dot.classList.remove('dot_selected'));/**supprime la des points pour les déselectionner */
+		dots.forEach(dot => dot.classList.remove('dot_selected'));/**supprime la class de tous les points pour les déselectionner */
 		dots[index].classList.add('dot_selected');/** Ajoute la classe au points correspondant a l'index marqué comme selectionné */
 	} else {
 		console.error("Index hors limites : ", index);
 	}
 }
 
-/*Ajout ecouteur d'événement*/ 
+/*Ajout ecouteur d'événement*/
 arrowLeft.addEventListener('click', function () {
-	currentIndex = (currentIndex - 1 + nbSlides)/*modulo qui permet de faire le slide infinie*/ % nbSlides;
-	updateCarousel(currentIndex);
+	currentIndex = (currentIndex - 1 + nbSlides)/*modulo garantit que currentIndex reste dans les limites valides '0 à nbslides -1' (slide infini)*/ % nbSlides;
+	updateCarousel(currentIndex);/** cela met a jour l'img, txt et dots */
 });
 
 arrowRight.addEventListener('click', function () {
