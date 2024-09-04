@@ -51,7 +51,7 @@ function updateCarousel(index) {
 	if (index >= 0 && index < slides.length) {
 
 		imageElement.src = './assets/images/slideshow/' + slides[index].image;
-		textElement.innerHTML = slides[index].tagLine;
+		textElement.innerHTML/*maj dynamique du contenu HTML par => */  = slides[index].tagLine;
 
 
 		dots.forEach(dot => dot.classList.remove('dot_selected'));
