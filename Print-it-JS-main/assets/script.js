@@ -50,8 +50,8 @@ function updateCarousel(index) {
 
 	if (index >= 0 && index < slides.length)/** verif si lindex fourni est valide */ {
 
-		imageElement.src/** met a jour la srce img correspondant a l'index */ = './assets/images/slideshow/' + slides[index].image;
-		textElement.innerHTML/*maj dynamique du contenu HTML du txt pour affiché la légende tagline */ = slides[index].tagLine;
+		imageElement.src = './assets/images/slideshow/' + slides[index].image;/** met a jour la srce img correspondant a l'index */
+		textElement.innerHTML = slides[index].tagLine;/*maj dynamique du contenu HTML du txt pour affiché la légende tagline */
 
 
 		dots.forEach(dot => dot.classList.remove('dot_selected'));/**supprime la class de tous les points pour les déselectionner */
@@ -63,11 +63,12 @@ function updateCarousel(index) {
 
 /*Ajout ecouteur d'événement*/
 arrowLeft.addEventListener('click', function () {
-	currentIndex = (currentIndex - 1 + nbSlides)/*modulo garantit que currentIndex reste dans les limites valides '0 à nbslides -1' (slide infini)*/ % nbSlides;
+	/*modulo garantit que currentIndex reste dans les limites valides '0 à nbslides -1' (slide infini)*/
+	currentIndex = (currentIndex - 1 + nbSlides) % nbSlides;
 	updateCarousel(currentIndex);/** cela met a jour l'img, txt et dots */
 });
 
 arrowRight.addEventListener('click', function () {
-	currentIndex = (currentIndex + 1 + nbSlides) % nbSlides;
+	currentIndex = (currentIndex + 1 ) % nbSlides;
 	updateCarousel(currentIndex);
 });
