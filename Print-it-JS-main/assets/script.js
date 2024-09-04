@@ -16,18 +16,19 @@ const slides = [
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-
+/* initialisation variable a 0*/
 let currentIndex = 0
 
+/* récupération de la class Arrow dans l'ID #banner */ 
 const arrowLeft = document.querySelector("#banner .arrow_left");
 const arrowRight = document.querySelector("#banner .arrow_right");
 
 
-
+/* initialisation constante avec valeur du nombre d éléments dans tableau slides */ 
 const nbSlides = slides.length;
 
 
-
+/*création des Dots + ajout CSS*/
 const divDots = document.getElementById("dots");
 for (let i = 0; i < nbSlides; i++) {
 	const dot = document.createElement('span');
@@ -40,9 +41,11 @@ for (let i = 0; i < nbSlides; i++) {
 
 const dots = document.querySelectorAll('.dot');
 
+/* recupération de la class .banner-img et P dans l'ID #banner*/ 
 const imageElement = document.querySelector("#banner .banner-img");
 const textElement = document.querySelector("#banner p");
 
+/*En fonction de l'index fourni l'image,txt,dots se mettent à jour*/ 
 function updateCarousel(index) {
 
 	if (index >= 0 && index < slides.length) {
@@ -57,8 +60,10 @@ function updateCarousel(index) {
 		console.error("Index hors limites : ", index);
 	}
 }
+
+/*Ajout ecouteur d'événement*/ 
 arrowLeft.addEventListener('click', function () {
-	currentIndex = (currentIndex - 1 + nbSlides) % nbSlides;
+	currentIndex = (currentIndex - 1 + nbSlides)/*modulo qui permet de faire le slide infinie*/ % nbSlides;
 	updateCarousel(currentIndex);
 });
 
