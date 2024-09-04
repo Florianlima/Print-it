@@ -43,6 +43,20 @@ const dots = document.querySelectorAll('.dot');
 const imageElement = document.querySelector("#banner .banner-img");
 const textElement = document.querySelector("#banner p");
 
+function updateCarousel(index) {
+
+	if (index >= 0 && index < slides.length) {
+		
+		imageElement.src = slides[index].image;
+		textElement.innerHTML = slides[index].tagLine;
+
+		
+		dots.forEach(dot => dot.classList.remove('dot_selected'));
+		dots[index].classList.add('dot_selected');
+	} else {
+		console.error("Index hors limites : ", index);
+	}
+}
 arrowLeft.addEventListener('click', function () {
 	currentIndex = (currentIndex - 1 + nbSlides) % nbSlides;
 	updateCarousel(currentIndex);
