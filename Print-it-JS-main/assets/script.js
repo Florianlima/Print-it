@@ -16,7 +16,7 @@ const slides = [
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-/* initialisation variable a 0*/
+/* initialisation variable currentIndex a 0*/
 let currentIndex = 0
 
 /* récupération de la class Arrow dans l'ID #banner */ 
@@ -30,16 +30,16 @@ const nbSlides = slides.length;
 
 /*création des Dots + ajout CSS*/
 const divDots = document.getElementById("dots");
-for (let i = 0; i < nbSlides; i++) {
-	const dot = document.createElement('span');
-	dot.classList.add('dot');
+for (let i = 0; i < nbSlides; i++)/** initialise la boucle qui itère de 0 a Nbslides -1 */ {
+	const dot = document.createElement('span');/** crée un nouvel élément span pour chaque itération */
+	dot.classList.add('dot');/** ajoute la class dot à chaque élément span crée */
 	if (i == 0) {
-		dot.classList.add('dot_selected');
+		dot.classList.add('dot_selected');/**ajoute la class au premier point (index 0)pour le marquer comme sélectionné */
 	}
-	divDots.appendChild(dot);
+	divDots.appendChild(dot);/**ajoute chaque point créé au conteneur divdots */
 }
 
-const dots = document.querySelectorAll('.dot');
+const dots = document.querySelectorAll('.dot');/** prend tous les éléments avec la class dot et les stocke dans la constante dots */
 
 /* recupération de la class .banner-img et P dans l'ID #banner*/ 
 const imageElement = document.querySelector("#banner .banner-img");
@@ -48,14 +48,14 @@ const textElement = document.querySelector("#banner p");
 /*En fonction de l'index fourni l'image,txt,dots se mettent à jour*/ 
 function updateCarousel(index) {
 
-	if (index >= 0 && index < slides.length) {
+	if (index >= 0 && index < slides.length)/** verif si lindex fourni est valide */ {
 
-		imageElement.src = './assets/images/slideshow/' + slides[index].image;
-		textElement.innerHTML/*maj dynamique du contenu HTML par => */  = slides[index].tagLine;
+		imageElement.src/** met a jour la srce img correspondant a l'index */ = './assets/images/slideshow/' + slides[index].image;
+		textElement.innerHTML/*maj dynamique du contenu HTML du txt pour affiché la légende tagline */  = slides[index].tagLine;
 
 
-		dots.forEach(dot => dot.classList.remove('dot_selected'));
-		dots[index].classList.add('dot_selected');
+		dots.forEach(dot => dot.classList.remove('dot_selected'));/**supprime la des points pour les déselectionner */
+		dots[index].classList.add('dot_selected');/** Ajoute la classe au points correspondant a l'index marqué comme selectionné */
 	} else {
 		console.error("Index hors limites : ", index);
 	}
