@@ -30,7 +30,7 @@ const nbSlides = slides.length;
 
 /*création des Dots + ajout CSS*/
 const divDots = document.getElementById("dots");
-for (let i = 0; i < nbSlides; i++)/** initialise la boucle qui itère de 0 a Nbslides -1 */ {
+for (let i = 0; i < nbSlides; i++) {
 	const dot = document.createElement('span');/** crée un nouvel élément span pour chaque itération */
 	dot.classList.add('dot');/** ajoute la class dot à chaque élément span crée */
 	if (i == 0) {
@@ -51,7 +51,7 @@ function updateCarousel(index) {
 	if (index >= 0 && index < slides.length)/** verif si lindex fourni est valide */ {
 
 		imageElement.src = './assets/images/slideshow/' + slides[index].image;/** met a jour la srce img correspondant a l'index */
-		textElement.innerHTML = slides[index].tagLine;/*maj dynamique du contenu HTML du txt pour affiché la légende tagline */
+		textElement.innerHTML = slides[index].tagLine;/*maj  du contenu HTML du txt pour affiché la légende tagline */
 
 
 		dots.forEach(dot => dot.classList.remove('dot_selected'));/**supprime la class de tous les points pour les déselectionner */
